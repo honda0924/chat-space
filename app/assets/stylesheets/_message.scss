@@ -2,8 +2,12 @@
   width:100%;
   color:white;
   text-align:center;
-  .notice{background-color: $action-color;
-  }  
+  .notice{
+    background-color: $action-color;
+  }
+  .alert{
+    background-color: $alert-color;
+  }
 }
 .chat-side{
   width:300px;

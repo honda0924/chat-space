@@ -10,7 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< Updated upstream
 ActiveRecord::Schema.define(version: 20190819102010) do
+=======
+ActiveRecord::Schema.define(version: 20190824105510) do
+
+  create_table "groups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "groups_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "group_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_groups_users_on_group_id", using: :btree
+    t.index ["user_id"], name: "index_groups_users_on_user_id", using: :btree
+  end
+>>>>>>> Stashed changes
+
+  create_table "messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text     "body",       limit: 65535
+    t.string   "image"
+    t.integer  "user_id"
+    t.integer  "group_id"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["group_id"], name: "index_messages_on_group_id", using: :btree
+    t.index ["user_id"], name: "index_messages_on_user_id", using: :btree
+  end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email",                  default: "", null: false
@@ -25,4 +55,11 @@ ActiveRecord::Schema.define(version: 20190819102010) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+<<<<<<< Updated upstream
+=======
+  add_foreign_key "groups_users", "groups"
+  add_foreign_key "groups_users", "users"
+  add_foreign_key "messages", "groups"
+  add_foreign_key "messages", "users"
+>>>>>>> Stashed changes
 end

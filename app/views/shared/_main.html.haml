@@ -1,0 +1,36 @@
+.chat-main
+  .main-header
+    .main-header__left-box
+      %h2.main-header__left-box__current-group
+        test-group
+      %ul.main-header__left-box__member-list
+        Member:
+        %li.main-header__left-box__member-list__member
+          test-user
+    .main-header__edit-btn
+      Edit
+  .messages
+    .message
+      .message__upper-info
+        %p.message__upper-info__talker
+          test-user
+        %p.message__upper-info__date
+          2019/08/13(Tue) 19:49:23
+      %p.message__text
+        こんにちは！
+    .message
+      .message__upper-info
+        %p.message__upper-info__talker
+          test-user
+        %p.message__upper-info__date
+          2019/08/14(Wed) 15:31:45
+      %p.message__text
+        さようなら
+  .form
+    %form#new_message.new_message(action="")
+      .input-box
+        %input#message-content.input-box__text(type="text" placeholder="type a message")
+        %label.input-box__image{for: "message-image"}
+          =fa_icon 'image'
+          %input#message-image.input-box__image__file(type="file")
+      %input.submit-btn(type="submit" value="Send" name="commit")

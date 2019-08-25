@@ -10,10 +10,9 @@
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
-/app/assets/images/*
+/public/uploads/*
 !/log/.keep
 !/tmp/.keep
-!/app/assets/images/.keep
 
 # Ignore Byebug command history file.
 .byebug_history

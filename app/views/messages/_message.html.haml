@@ -1,0 +1,10 @@
+.message
+  .message__upper-info
+    .message__upper-info__talker
+      =message.user.name
+    .message__upper-info__date
+      =message.created_at
+  .message__text
+    - if message.body.present?
+      =message.body
+    = image_tag message.image.url, class: 'message__image' if message.image.present?

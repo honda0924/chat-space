@@ -1,16 +1,10 @@
 .message
   .message__upper-info
-    %p.message__upper-info__talker
-      test-user
-    %p.message__upper-info__date
-      2019/08/13(Tue) 19:49:23
-  %p.message__text
-    こんにちは！
-.message
-  .message__upper-info
-    %p.message__upper-info__talker
-      test-user
-    %p.message__upper-info__date
-      2019/08/14(Wed) 15:31:45
-  %p.message__text
-    さようなら
+    .message__upper-info__talker
+      =message.user.name
+    .message__upper-info__date
+      =message.created_at
+  .message__text
+    - if message.body.present?
+      =message.body
+    = image_tag message.image.url, class: 'message__image' if message.image.present?

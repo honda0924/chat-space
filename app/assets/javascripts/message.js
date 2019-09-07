@@ -1,17 +1,23 @@
 $(function(){
   function buildHTML(message){
-    var html = `.message__upper-info
-                  .message__upper-info__talker
-                    ${message.user_name}
-                  .message__upper-info__date
-                    ${message.created_at}
-                .message__text
-                  - if message.body.present?
+    image = (message.image) ? `<img class="message__image" src="${ message.image }">`: "";
+    var html = `<div class="message">
+                  <div class="message__upper-info">
+                    <div class="message__upper-info__talker">
+                      ${message.user_name}
+                    </div>
+                    <div class="message__upper-info__date">
+                      ${message.created_at}
+                    </div>
+                  </div>
+                  <div class="message__text">
                     ${message.body}
-                  = image_tag message.image.url, class: 'message__image' if message.image.present?`
+                    ${image}
+                  </div>
+                </div>`
     return html;
   }
-  $('.form').on('submit', function(e){
+  $('#new_message').on('submit', function(e){
     e.preventDefault();
     var formData = new FormData(this);
     var url = $(this).attr('action')
@@ -28,8 +34,7 @@ $(function(){
     })
     .done(function(data){
       var html = buildHTML(data);
-      $('.message').append(html)
-      $('messages').animate({scrollBottom: 0}, 500, 'swing');
+      $('.messages').append(html).animate({scrollTop: $('.messages')[0].scrollHeight},'fast');
       $('.input-box__text').val('')
     })
     .fail(function(){

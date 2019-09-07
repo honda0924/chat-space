@@ -35,7 +35,7 @@ $(function(){
     .done(function(data){
       var html = buildHTML(data);
       $('.messages').append(html).animate({scrollTop: $('.messages')[0].scrollHeight},'fast');
-      $('.input-box__text').val('')
+      document.getElementById('new_message').reset();
     })
     .fail(function(){
       alert('error');

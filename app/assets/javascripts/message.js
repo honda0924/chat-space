@@ -58,8 +58,10 @@ $(function(){
       .done(function(messages) {
         var insertHTML = '';
         messages.forEach(function(message) {
-          insertHTML = buildHTML(message);
-          $('.messages').append(insertHTML);
+          if (message.id > last_message_id){
+            insertHTML = buildHTML(message);
+            $('.messages').append(insertHTML);
+          }
         });
         $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight},'fast');
       })

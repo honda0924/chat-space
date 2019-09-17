@@ -53,15 +53,13 @@ $(function(){
         type: 'get',
         dataType: 'json',
       //dataオプションでリクエストに値を含める
-        data: {last_id: last_message_id}
+        data: {messageid: last_message_id}
       })
       .done(function(messages) {
         var insertHTML = '';
         messages.forEach(function(message) {
-          if (message.id > last_message_id){
-            insertHTML = buildHTML(message);
-            $('.messages').append(insertHTML);
-          }
+          insertHTML = buildHTML(message);
+          $('.messages').append(insertHTML);
         });
         $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight},'fast');
       })

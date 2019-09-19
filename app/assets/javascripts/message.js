@@ -12,6 +12,8 @@ $(function(){
                   </div>
                   <div class="message__text">
                     ${message.body}
+                  </div>
+                  <div class="message__image">
                     ${image}
                   </div>
                 </div>`
@@ -59,9 +61,8 @@ $(function(){
         var insertHTML = '';
         messages.forEach(function(message) {
           insertHTML = buildHTML(message);
-          $('.messages').append(insertHTML);
+          $('.messages').append(insertHTML).animate({scrollTop: $('.messages')[0].scrollHeight},'fast');
         });
-        $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight},'fast');
       })
       .fail(function() {
         alert('error');
